@@ -1,0 +1,8 @@
+private void btnEnregistrer_Click(object sender, EventArgs e)
+1
+
+this. mesDonneestF . Lecon. Add(nouvellelecon);
+
+this. mesDonneesEF . saveChanges();
+
+MessageBox. Shon(“Enregistrenent Validé');

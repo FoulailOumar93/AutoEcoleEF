@@ -1,0 +1,18 @@
+private lecon nouvellelecon()
+{
+int n = newNumLecon();
+eleve el = (eleve)cmbEleve.SelectedValue;
+DateTime d = this.dtLecon.Value;
+int heurelecon = Convert.ToInt32(this.cmbHeure.SelectedItem);
+int nbHeures = 1;
+if (this.rdButtonl.Checked)
+nbHeures = 2;
+lecon 1 = new lecon();
+1.date = d;
+1.heure = heureLecon;
+1.duree = nbHeures;
+1.id = n;
+1.eleve
+return 1;
+
+el;

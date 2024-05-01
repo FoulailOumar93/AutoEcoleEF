@@ -1,0 +1,7 @@
+private int newNumLecon()
+{
+int nj
+int dernier = (from ra in this.mesDonneesEF.lecon
+select ra.id).Max();
+n = dernier + 1;
+return n;

@@ -1,0 +1,7 @@
+public FrmAjoutLecon(autoecoleEntities mesDonneesEF)
+{
+InitializeComponent();
+this.mesDonneesEF = mesDonneesEF;
+this .bdgsEleve.DataSource = this.mesDonneesEF.eleves;
+for (int i = 8; i < 20; i++)
+this .cmbHeure. Items .Add (i);

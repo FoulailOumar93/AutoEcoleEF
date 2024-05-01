@@ -1,0 +1,5 @@
+﻿private void bindingNavigatorMovePreviousItem_CheckedChanged(objectsender, EventArgs e)
+if (txtAdresse.Text == "" || txtNom.Text == "" || txtPrenom.Text == "")
+Î
+MessageBox.Show("Il faut remplir tous les champs du nouvel élève"); bdgEleve.CancelEdit();// permet d'annuler l'ajout dans le cas
+// où le nouvel élève n'a pas d'info

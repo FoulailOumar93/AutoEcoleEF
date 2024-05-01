@@ -1,0 +1,11 @@
+﻿private void bindingNavigatorDeleteItem_cClick(object sender, EventArgs e)
+!
+using (var context = new autoecoleEntities())
+{
+var idASupprimer = Convert.ToInt16(txtNum.Text);
+var entiteASupprimer = context.eleve.FirstOrDefault(el => el.id == idASupprimer);
+if (entiteASupprimer != null)
+{
+context.eleve.Remove(entiteASupprimer) ; context.SaveChanges() ;
+bdgSourceEleve .RemoveCurrent() ;
+MessageBox.Show("Enregistrement supprimé"); }
