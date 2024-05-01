@@ -74,7 +74,7 @@ Pour contacter le support ou obtenir des informations directement relatives à W
 
     GitHub : Pour des questions techniques, des rapports de bug ou des contributions, vous pouvez visiter le dépôt GitHub de WinForms, qui fait partie du projet open-source .NET.
 
-    Support Microsoft : Pour un support plus formel, vous pouvez contacter le support Microsoft à travers leur service de support client ou via les options de support technique disponibles pour les          produits Microsoft.
+    Support Microsoft : Pour un support plus formel, vous pouvez contacter le support Microsoft à travers leur service de support client ou via les options de support technique disponibles pour les    produits Microsoft.
 
     Communautés de développeurs : Participer aux forums comme Stack Overflow, ou les canaux dédiés .NET sur des plateformes comme Reddit ou Discord peut également être une excellente manière d'obtenir de l'aide.
 
