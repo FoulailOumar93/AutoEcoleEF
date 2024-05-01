@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="autoecoleModelStoreContainer" CdmEntityContainer="autoecoleEntities">
+    <EntitySetMapping Name="eleve">
+      <EntityTypeMapping TypeName="autoecoleModel.eleve">
+        <MappingFragment StoreEntitySet="eleve">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="dateInscription" ColumnName="dateInscription" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="adresse" ColumnName="adresse" />
+          <ScalarProperty Name="creditHoraire" ColumnName="creditHoraire" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lecon">
+      <EntityTypeMapping TypeName="autoecoleModel.lecon">
+        <MappingFragment StoreEntitySet="lecon">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="idEleve" ColumnName="idEleve" />
+          <ScalarProperty Name="heure" ColumnName="heure" />
+          <ScalarProperty Name="duree" ColumnName="duree" />
+          <ScalarProperty Name="effectueeOui_Non" ColumnName="effectueeOui_Non" />
+          <ScalarProperty Name="numImmaVehicule" ColumnName="numImmaVehicule" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vehicule">
+      <EntityTypeMapping TypeName="autoecoleModel.vehicule">
+        <MappingFragment StoreEntitySet="vehicule">
+          <ScalarProperty Name="numImma" ColumnName="numImma" />
+          <ScalarProperty Name="modele" ColumnName="modele" />
+          <ScalarProperty Name="couleur" ColumnName="couleur" />
+          <ScalarProperty Name="enEtat" ColumnName="enEtat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

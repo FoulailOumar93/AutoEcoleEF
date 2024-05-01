@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="autoecoleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="eleve">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="nom" Type="varchar" MaxLength="20" />
+    <Property Name="dateInscription" Type="date" />
+    <Property Name="prenom" Type="varchar" MaxLength="20" />
+    <Property Name="adresse" Type="varchar" MaxLength="30" />
+    <Property Name="creditHoraire" Type="int" />
+  </EntityType>
+  <EntityType Name="lecon">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="date" Type="date" Nullable="false" />
+    <Property Name="idEleve" Type="int" />
+    <Property Name="heure" Type="int" />
+    <Property Name="duree" Type="int" />
+    <Property Name="effectueeOui_Non" Type="smallint" Nullable="false" />
+    <Property Name="numImmaVehicule" Type="varchar" MaxLength="8" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="vehicule">
+    <Key>
+      <PropertyRef Name="numImma" />
+    </Key>
+    <Property Name="numImma" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="modele" Type="varchar" MaxLength="20" />
+    <Property Name="couleur" Type="varchar" MaxLength="30" />
+    <Property Name="enEtat" Type="smallint" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_eleve_eleve">
+    <End Role="eleve" Type="Self.eleve" Multiplicity="1" />
+    <End Role="eleve1" Type="Self.eleve" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="eleve">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="eleve1">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="lecon_ibfk_1">
+    <End Role="vehicule" Type="Self.vehicule" Multiplicity="0..1" />
+    <End Role="lecon" Type="Self.lecon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vehicule">
+        <PropertyRef Name="numImma" />
+      </Principal>
+      <Dependent Role="lecon">
+        <PropertyRef Name="numImmaVehicule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="lecon_ibfk_2">
+    <End Role="eleve" Type="Self.eleve" Multiplicity="0..1" />
+    <End Role="lecon" Type="Self.lecon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="eleve">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="lecon">
+        <PropertyRef Name="idEleve" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="autoecoleModelStoreContainer">
+    <EntitySet Name="eleve" EntityType="Self.eleve" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lecon" EntityType="Self.lecon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vehicule" EntityType="Self.vehicule" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_eleve_eleve" Association="Self.FK_eleve_eleve">
+      <End Role="eleve" EntitySet="eleve" />
+      <End Role="eleve1" EntitySet="eleve" />
+    </AssociationSet>
+    <AssociationSet Name="lecon_ibfk_1" Association="Self.lecon_ibfk_1">
+      <End Role="vehicule" EntitySet="vehicule" />
+      <End Role="lecon" EntitySet="lecon" />
+    </AssociationSet>
+    <AssociationSet Name="lecon_ibfk_2" Association="Self.lecon_ibfk_2">
+      <End Role="eleve" EntitySet="eleve" />
+      <End Role="lecon" EntitySet="lecon" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

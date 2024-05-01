@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="autoecoleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="eleve">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="nom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="dateInscription" Type="DateTime" Precision="0" />
+    <Property Name="prenom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="adresse" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="creditHoraire" Type="Int32" />
+    <NavigationProperty Name="eleve1" Relationship="Self.FK_eleve_eleve" FromRole="eleve" ToRole="eleve1" />
+    <NavigationProperty Name="eleve2" Relationship="Self.FK_eleve_eleve" FromRole="eleve1" ToRole="eleve" />
+    <NavigationProperty Name="lecon" Relationship="Self.lecon_ibfk_2" FromRole="eleve" ToRole="lecon" />
+  </EntityType>
+  <EntityType Name="lecon">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="idEleve" Type="Int32" />
+    <Property Name="heure" Type="Int32" />
+    <Property Name="duree" Type="Int32" />
+    <Property Name="effectueeOui_Non" Type="Int16" Nullable="false" />
+    <Property Name="numImmaVehicule" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="eleve" Relationship="Self.lecon_ibfk_2" FromRole="lecon" ToRole="eleve" />
+    <NavigationProperty Name="vehicule" Relationship="Self.lecon_ibfk_1" FromRole="lecon" ToRole="vehicule" />
+  </EntityType>
+  <EntityType Name="vehicule">
+    <Key>
+      <PropertyRef Name="numImma" />
+    </Key>
+    <Property Name="numImma" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="modele" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="couleur" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="enEtat" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="lecon" Relationship="Self.lecon_ibfk_1" FromRole="vehicule" ToRole="lecon" />
+  </EntityType>
+  <Association Name="FK_eleve_eleve">
+    <End Role="eleve" Type="Self.eleve" Multiplicity="1" />
+    <End Role="eleve1" Type="Self.eleve" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="eleve">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="eleve1">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="lecon_ibfk_2">
+    <End Role="eleve" Type="Self.eleve" Multiplicity="0..1" />
+    <End Role="lecon" Type="Self.lecon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="eleve">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="lecon">
+        <PropertyRef Name="idEleve" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="lecon_ibfk_1">
+    <End Role="vehicule" Type="Self.vehicule" Multiplicity="0..1" />
+    <End Role="lecon" Type="Self.lecon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="vehicule">
+        <PropertyRef Name="numImma" />
+      </Principal>
+      <Dependent Role="lecon">
+        <PropertyRef Name="numImmaVehicule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="autoecoleEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="eleve" EntityType="Self.eleve" />
+    <EntitySet Name="lecon" EntityType="Self.lecon" />
+    <EntitySet Name="vehicule" EntityType="Self.vehicule" />
+    <AssociationSet Name="FK_eleve_eleve" Association="Self.FK_eleve_eleve">
+      <End Role="eleve" EntitySet="eleve" />
+      <End Role="eleve1" EntitySet="eleve" />
+    </AssociationSet>
+    <AssociationSet Name="lecon_ibfk_2" Association="Self.lecon_ibfk_2">
+      <End Role="eleve" EntitySet="eleve" />
+      <End Role="lecon" EntitySet="lecon" />
+    </AssociationSet>
+    <AssociationSet Name="lecon_ibfk_1" Association="Self.lecon_ibfk_1">
+      <End Role="vehicule" EntitySet="vehicule" />
+      <End Role="lecon" EntitySet="lecon" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
