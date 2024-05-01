@@ -1,7 +1,8 @@
 # Application de Gestion d'Auto-école
 
 Cette application est un système de gestion pour une auto-école, développée en C# avec l'utilisation de Windows Forms. Elle permet de gérer les élèves, les véhicules, les leçons, et de suivre les progrès des élèves.
-Fonctionnalités
+
+## Fonctionnalités
 
     Gestion des élèves : Ajout, modification et suppression d'informations sur les élèves.
     Gestion des véhicules : Ajout, modification et visualisation des véhicules disponibles pour les leçons de conduite.
